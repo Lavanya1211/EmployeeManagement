@@ -65,5 +65,6 @@ SALARY
 - created_at
 - updated_at
 
+![tmp_b704d414-8c88-46ba-bb71-d728a2b4566b](https://github.com/user-attachments/assets/ec0f3c06-5ff4-41a1-aaf0-00d028513cc2)
 
 
