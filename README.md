@@ -1,4 +1,4 @@
-ERD 
+Table design
 
 EMPLOYEE
 - employee_id(PK)
