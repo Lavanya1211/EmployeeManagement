@@ -10,10 +10,7 @@ public class ViewsController {
 	public String home() {
 		return "index";
 	}
-	/**
-	 * this is used to show the list of employees
-	 * @return
-	 */
+	
 	@GetMapping("/employee/list")
 	public String employeeList() {
 	    return "employeeList"; 
@@ -22,5 +19,10 @@ public class ViewsController {
 	@GetMapping("/employee/add")
 	public String addEmployee() {
 		return "addEmployee";
+	}
+	
+	@GetMapping("/employee/edit")
+	public String editEmployee() {
+		return "editEmployee";
 	}
 }
