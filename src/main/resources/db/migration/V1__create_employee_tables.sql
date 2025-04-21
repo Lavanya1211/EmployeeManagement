@@ -1,3 +1,27 @@
+-- DEPARTMENT Table
+CREATE TABLE department (
+    department_id SERIAL PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL,
+    description VARCHAR(100),
+    status VARCHAR(20) CHECK (status IN ('active', 'inactive')),
+    created_by VARCHAR(100),
+    updated_by VARCHAR(100),
+    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- JOB_TITLE Table
+CREATE TABLE job_title (
+    job_title_id SERIAL PRIMARY KEY,
+    job_title VARCHAR(100) NOT NULL,
+    description VARCHAR(100),
+    status VARCHAR(20) CHECK (status IN ('active', 'inactive')),
+    created_by VARCHAR(100),
+    updated_by VARCHAR(100),
+    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
 CREATE TABLE employee (
     employee_id SERIAL PRIMARY KEY,
     first_name VARCHAR(100) NOT NULL,
@@ -37,30 +61,6 @@ CREATE TABLE employee_additional_information (
     updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- DEPARTMENT Table
-CREATE TABLE department (
-    department_id SERIAL PRIMARY KEY,
-    department_name VARCHAR(100) NOT NULL,
-    description VARCHAR(100),
-    status VARCHAR(20) CHECK (status IN ('active', 'inactive')),
-    created_by VARCHAR(100),
-    updated_by VARCHAR(100),
-    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
-
--- JOB_TITLE Table
-CREATE TABLE job_title (
-    job_title_id SERIAL PRIMARY KEY,
-    job_title VARCHAR(100) NOT NULL,
-    description VARCHAR(100),
-    status VARCHAR(20) CHECK (status IN ('active', 'inactive')),
-    created_by VARCHAR(100),
-    updated_by VARCHAR(100),
-    created_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_on TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
 
 
 -- SALARY Table
