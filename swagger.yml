@@ -1,0 +1,536 @@
+openapi: 3.0.3
+info:
+  title: Employee Management API
+  version: 1.0.0
+paths:
+  /employee/list:
+    get:
+      summary: Get all employees
+      tags:
+        - Employee
+      responses:
+        '200':
+          description: List of employees
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseEmployeeList'
+  /employee/create:
+    post:
+      summary: Create a new employee
+      tags:
+        - Employee
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeInput'
+      responses:
+        '201':
+          description: Employee created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseEmployee'
+  /employee/{employeeId}:
+    get:
+      summary: Get an employee by ID
+      tags:
+        - Employee
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single employee
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseEmployee'
+    put:
+      summary: Update an employee
+      tags:
+        - Employee
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeInput'
+      responses:
+        '200':
+          description: Employee updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseEmployee'
+    delete:
+      summary: Delete an employee
+      tags:
+        - Employee
+      parameters:
+        - name: employeeId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Employee deleted
+
+  /department/list:
+    get:
+      summary: Get all departments
+      tags:
+        - Department
+      responses:
+        '200':
+          description: List of departments
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDepartmentList'
+  /department/create:
+    post:
+      summary: Create a new department
+      tags:
+        - Department
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentInput'
+      responses:
+        '201':
+          description: Department created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDepartment'
+  /department/{departmentId}:
+    get:
+      summary: Get a department by ID
+      tags:
+        - Department
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single department
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDepartment'
+    put:
+      summary: Update a department
+      tags:
+        - Department
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentInput'
+      responses:
+        '200':
+          description: Department updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseDepartment'
+    delete:
+      summary: Delete a department
+      tags:
+        - Department
+      parameters:
+        - name: departmentId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Department deleted
+
+  /jobTitle/list:
+    get:
+      summary: Get all job titles
+      tags:
+        - Job Title
+      responses:
+        '200':
+          description: List of job titles
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseJobTitleList'
+  /jobTitle/create:
+    post:
+      summary: Create a new job title
+      tags:
+        - Job Title
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobTitleInput'
+      responses:
+        '201':
+          description: Job title created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseJobTitle'
+  /jobTitle/{jobTitleId}:
+    get:
+      summary: Get a job title by ID
+      tags:
+        - Job Title
+      parameters:
+        - name: jobTitleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single job title
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseJobTitle'
+    put:
+      summary: Update a job title
+      tags:
+        - Job Title
+      parameters:
+        - name: jobTitleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/JobTitleInput'
+      responses:
+        '200':
+          description: Job title updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseJobTitle'
+    delete:
+      summary: Delete a job title
+      tags:
+        - Job Title
+      parameters:
+        - name: jobTitleId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Job title deleted
+
+  /salary/list:
+    get:
+      summary: Get all salaries
+      tags:
+        - Salary
+      responses:
+        '200':
+          description: List of salaries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSalaryList'
+  /salary/create:
+    post:
+      summary: Create a new salary entry
+      tags:
+        - Salary
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalaryInput'
+      responses:
+        '201':
+          description: Salary created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSalary'
+  /salary/{salaryId}:
+    get:
+      summary: Get a salary by ID
+      tags:
+        - Salary
+      parameters:
+        - name: salaryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: A single salary
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSalary'
+    put:
+      summary: Update a salary
+      tags:
+        - Salary
+      parameters:
+        - name: salaryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SalaryInput'
+      responses:
+        '200':
+          description: Salary updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ApiResponseSalary'
+    delete:
+      summary: Delete a salary entry
+      tags:
+        - Salary
+      parameters:
+        - name: salaryId
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Salary deleted
+
+components:
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+        data:
+          type: object
+        statusCode:
+          type: string
+    ApiResponseEmployeeList:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Employee'
+    ApiResponseEmployee:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Employee'
+    ApiResponseDepartmentList:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Department'
+    ApiResponseDepartment:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Department'
+    ApiResponseJobTitleList:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/JobTitle'
+    ApiResponseJobTitle:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/JobTitle'
+    ApiResponseSalaryList:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Salary'
+    ApiResponseSalary:
+      allOf:
+        - $ref: '#/components/schemas/ApiResponse'
+        - type: object
+          properties:
+            data:
+              $ref: '#/components/schemas/Salary'
+    Employee:
+      type: object
+      properties:
+        id:
+          type: integer
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        hireDate:
+          type: string
+          format: date
+        departmentId:
+          type: integer
+        jobTitleId:
+          type: integer
+        managerId:
+          type: integer
+        dateOfBirth:
+          type: string
+          format: date
+    Department:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        location:
+          type: string
+    JobTitle:
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        departmentId:
+          type: integer
+    Salary:
+      type: object
+      properties:
+        id:
+          type: integer
+        amount:
+          type: number
+          format: float
+        employeeId:
+          type: integer
+    EmployeeInput:
+      type: object
+      required:
+        - firstName
+        - lastName
+        - email
+        - hireDate
+        - departmentId
+        - jobTitleId
+      properties:
+        firstName:
+          type: string
+        lastName:
+          type: string
+        email:
+          type: string
+        phoneNumber:
+          type: string
+        hireDate:
+          type: string
+          format: date
+        departmentId:
+          type: integer
+        jobTitleId:
+          type: integer
+        managerId:
+          type: integer
+        dateOfBirth:
+          type: string
+          format: date
+    DepartmentInput:
+      type: object
+      required:
+        - name
+        - location
+      properties:
+        name:
+          type: string
+        location:
+          type: string
+    JobTitleInput:
+      type: object
+      required:
+        - title
+        - departmentId
+      properties:
+        title:
+          type: string
+        departmentId:
+          type: integer
+    SalaryInput:
+      type: object
+      required:
+        - amount
+        - employeeId
+      properties:
+        amount:
+          type: number
+          format: float
+        employeeId:
+          type: integer
