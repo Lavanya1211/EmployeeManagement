@@ -1,48 +1,48 @@
 package com.lvn.employee.model;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.Table;
-import lombok.Data;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
 
-@Data
 @Entity
-@Table(name = "EMPLOYEE")
+@Table(name = "employee")
 public class Employee {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int Id;
-	
-	@Column(name = "EMPLOYEE_NAME")
-	private String name;
-	
-	@Column(name = "EMAIL",unique = true, nullable = false)
-	private String email;
-	
-	@Column(name = "PHONE_NUMBER")
-	private String phone;
-	
-	@Column(name = "ADDRESS")
-	private String address;
-	
-	@Column(name = "PROJECT_NAME")
-	private String project;
-	
-	@Column(name = "ROLE_NAME")
-	private String role;
-	
-	@Column(name = "DOB")
-	private Date dob;
-	
-	@Column(name = "DATE_OF_JOINED")
-	private Date doj;
-	
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
+    @SequenceGenerator(name = "employee_seq", sequenceName = "employee_seq", allocationSize = 1)
+    private Long employeeId;
 
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String phoneNumber;
+    private Date joiningDate;
+    private Date dateOfBirth;
+
+    private String status;
+    private String createdBy;
+    private String updatedBy;
+    private Timestamp createdOn;
+    private Timestamp updatedOn;
+
+    @ManyToOne
+    @JoinColumn(name = "departmentId")
+    private Department department;
+
+    @ManyToOne
+    @JoinColumn(name = "jobTitleId")
+    private JobTitle jobTitle;
+
+    @ManyToOne
+    @JoinColumn(name = "employeeId")
+    private int manager;
 }
+
